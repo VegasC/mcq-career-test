@@ -1,9 +1,9 @@
+from api.ml.model import ml_blueprint
 from flask import Flask
 from flask import jsonify, make_response
 
-# ml route
-from api.ml.model import ml_blueprint
 
+# ml route
 app = Flask(__name__)
 app.register_blueprint(ml_blueprint)
 
