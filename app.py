@@ -1,13 +1,15 @@
+from flask import Flask, jsonify, make_response
+from flask_cors import CORS, cross_origin
 from api.ml.model import ml_blueprint
-from flask import Flask
-from flask import jsonify, make_response
 
 
 # ml route
 app = Flask(__name__)
+CORS(app, support_credentials=True)
+
 app.register_blueprint(ml_blueprint)
 
-
+@cross_origin(supports_credentials=True)
 @app.errorhandler(404)
 def not_found(error):
     return make_response(jsonify({'error': 'Not found'}), 404)
